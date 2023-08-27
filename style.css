@@ -1,0 +1,228 @@
+* {
+  box-sizing: border-box;
+}
+
+.wrapper {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.card-container {
+  margin: 0 auto;
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  position: relative;
+}
+
+.card {
+  min-width: 330px;
+  height: 330px;
+  perspective: 1500px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.75, 0, 0.85, 1);
+  margin: 1em;
+}
+
+.card-content {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(0.75, 0, 0.85, 1);
+  letter-spacing: 0.05em;
+}
+
+.card-toggle:checked + .card-content {
+  transform: rotateY(540deg);
+}
+
+.card-front,
+.card-back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  border-radius: 6px;
+}
+
+.card-front {
+  background-color: #622080;
+  letter-spacing: 2.5px;
+  background-size: cover;
+  align-items: center;
+  text-align: center;
+  font-family: "trebuchet MS", sans-serif;
+}
+.card-front .inner {
+  height: 100%;
+  padding: 0.5em;
+  transform: translateZ(60px) scale(0.94);
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.card-back {
+  transform: rotateY(180deg);
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 0.5em;
+  color: #fff;
+  background: cover;
+}
+.card-back .inner {
+  height: 100%;
+  padding: 0.5em;
+  transform: translateZ(60px) scale(0.94);
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.card-back .name {
+  text-transform: uppercase;
+  padding: 0.03em;
+  font-size: 15.5px;
+  font-family: "trebuchet MS", sans-serif;
+  -webkit-text-stroke: 0.075px yellow;
+  letter-spacing: 0.2em;
+  font-weight: 600;
+  text-align: center;
+}
+.card-back .info {
+  position: relative;
+  display: flex;
+  align-items: left;
+  padding-bottom: 0.1em;
+  text-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+.card-back .info span {
+  font-size: 1.3em;
+  font-weight: bold;
+  color: #852dad;
+  margin-right: 0.2em;
+  padding-left: 0.2em;
+  font-family: "trebuchet MS", sans- serif;
+  padding-bottom: 0.1em;
+  text-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+.card-back .info .feature {
+  margin-left: 0.1em;
+  margin-bottom: -0.3em;
+}
+.card-back .info .feature span {
+  display: flex;
+  margin-top: -0.1em;
+  margin-bottom: 0.1em;
+  font-size: 0.73em;
+  font-family: "verdana", sans- serif;
+  padding: 0.2em;
+  padding-bottom: 0.75em;
+  color: #fff;
+  letter-spacing: 0.04em;
+}
+.card-back .price {
+  grid-row: 1;
+  grid-column: 2;
+  justify-self: flex-start;
+  text-align: right;
+  padding-bottom: 0.1em;
+  font-weight: 50;
+  font-family: "trebuchet MS", sans- serif;
+  color: #fce803;
+  margin-bottom: 0.4em;
+  margin-top: -0.3em;
+}
+.card-back .description {
+  display: flex;
+  text-align: left;
+  font-size: 12.5px;
+  letter-spacing: 0.1em;
+  color: #fff;
+  overflow: auto;
+  padding-left: 1em;
+  padding-right: 1em;
+  line-height: 1.4em;
+  max-height: 100px;
+  border: solid 1.5px #fce803;
+  background: transparent;
+  font-family: "trebuchet MS", sans-serif;
+}
+
+.card-back-color {
+  transition: background-color 0.7s linear;
+}
+
+.card-toggle:checked + .card-content .card-back-color {
+  background-color: #5A5A5A;
+}
+
+h2 {
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  color: #fff;
+  font-weight: 100;
+  text-shadow: 0.5px 0.5px gray;
+  margin: 10px;
+}
+
+.card-toggle:checked + .card-content .return {
+  display: block;
+}
+
+/* Hide the radio buttons */
+.card-toggle {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+.button {
+  font-family: "trebuchet MS", sans-serif;
+  bottom: 10px;
+  right: 10px;
+  top: 295px;
+  position: absolute;
+  grid-row: -1;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 400;
+  cursor: pointer;
+  display: block;
+  padding: 0 0.5em 0.5em;
+  height: 2em;
+  line-height: 2em;
+  min-width: 2.5em;
+  border: solid 1px #fff;
+  color: #fff;
+  border-radius: 6px;
+  text-align: center;
+  left: 60%;
+  backface-visibility: hidden;
+  transition: 0.3s ease-in-out;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+}
+.button:hover {
+  background-color: transparent;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+  text-shadow: none;
+}
+
+::-webkit-scrollbar {
+  width: 3.5px;
+  background: #fff;
+}
+
+::-webkit-scrollbar-track {
+  background: #fff;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #fded35;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #fce803;
+}
